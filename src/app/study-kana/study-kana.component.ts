@@ -15,7 +15,7 @@ export class StudyKanaComponent implements OnInit {
   constructor(private languageSelectService: LanguageSelectService, private dialog: MdDialog ) { }
 
   ngOnInit() {
-
+    this.configure();
   }
   configure() {
     this.dialog.open(LanguageSelectComponent);
