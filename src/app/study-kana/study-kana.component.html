@@ -1,0 +1,11 @@
+<h1>Study Kana</h1>
+<button md-button color="primary" (click)="configure();">Configure</button>
+<div *ngFor="let item of this.languageSelectService.hiragana$ | async">
+  <span>{{item.r}}</span>
+  <span>{{item.c}}</span>
+</div>
+
+<div *ngFor="let item of this.languageSelectService.katakana$ | async">
+  <span>{{item.r}}</span>
+  <span>{{item.c}}</span>
+</div>

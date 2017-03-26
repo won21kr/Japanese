@@ -1,0 +1,47 @@
+<div>
+  <h1 md-dialog-title>Select characters</h1>
+  <md-dialog-content>
+    <div class="group">
+      <div class="languageSubselect">
+        <md-checkbox (change)="checkAllHiragana()" [checked]="isAllHiraganaChecked()">
+          Hiragana All
+        </md-checkbox>
+        <br/>
+        <md-checkbox [checked]="hiraganaBase" [(ngModel)]="hiraganaBase"> Base
+        </md-checkbox>
+        <md-checkbox type="checkbox" [checked]="hiraganaDiacritics" [(ngModel)]="hiraganaDiacritics">
+          Diacritics
+        </md-checkbox>
+        <md-checkbox type="checkbox" [checked]="hiraganaContracted" [(ngModel)]="hiraganaContracted">
+          Contracted
+        </md-checkbox>
+        <md-checkbox type="checkbox" [checked]="hiraganaDiacriticsContracted" [(ngModel)]="hiraganaDiacriticsContracted"> Diacritics Contracted
+        </md-checkbox>
+      </div>
+    </div>
+    <div class="group">
+      <div class="languageSubselect">
+        <md-checkbox type="checkbox" (change)="checkAllKatakana()" [checked]="isAllKatakanaChecked()">
+          Katakana All
+        </md-checkbox>
+        <br/>
+        <md-checkbox type="checkbox" [checked]="katakanaBase" [(ngModel)]="katakanaBase">
+          Base
+        </md-checkbox>
+        <md-checkbox type="checkbox" [checked]="katakanaDiacritics" [(ngModel)]="katakanaDiacritics">
+          Diacritics
+        </md-checkbox>
+        <md-checkbox type="checkbox" [checked]="katakanaContracted" [(ngModel)]="katakanaContracted">
+          Contracted
+        </md-checkbox>
+        <md-checkbox type="checkbox" [checked]="katakanaDiacriticsContracted" [(ngModel)]="katakanaDiacriticsContracted">
+          Diacritics Contracted
+        </md-checkbox>
+      </div>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-button md-dialog-close color="primary" (click)="updateCharacters()">Apply</button>
+    <button md-button md-dialog-close color="secondary">Cancel</button>
+  </md-dialog-actions>
+</div>

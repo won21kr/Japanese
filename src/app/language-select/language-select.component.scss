@@ -1,0 +1,12 @@
+.group {
+  display:inline-block;
+  padding-right: 10px;
+}
+.languageSubselect {
+  display: inline-block;
+  vertical-align: top;
+
+  md-checkbox {
+    display:block;
+  }
+}
