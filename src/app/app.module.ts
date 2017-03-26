@@ -13,6 +13,7 @@ import { LanguageSelectComponent } from './language-select/language-select.compo
 import { LanguageSelectService } from 'app/language-select/language-select.service';
 import { MaterialModule, MdDialog } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { GridComponent } from './grid/grid.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     StudyVocabComponent,
     MenuComponent,
     HomeComponent,
-    LanguageSelectComponent
+    LanguageSelectComponent,
+    GridComponent
   ],
   imports: [
     BrowserModule,
