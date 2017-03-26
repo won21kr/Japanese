@@ -1,0 +1,26 @@
+$size:250;
+.ask, .answer {
+  border-radius:100%;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+}
+.ask {
+  width:$size + px;
+  height:$size + px;
+  background:#eee;
+  line-height: $size + px;
+  font-size: 72px;
+}
+.answer {
+  width:$size/2 + px;
+  height:$size/2 + px;
+  background: rgba(255,255,255,0.8);
+  margin-top: -$size/4 + px;
+  margin-left:$size/1.5 + px;
+  line-height: $size/2 + px;
+  font-size: 34px;
+}

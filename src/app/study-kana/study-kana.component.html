@@ -1,11 +1,8 @@
 <h1>Study Kana</h1>
 <button md-button color="primary" (click)="configure();">Configure</button>
-<div *ngFor="let item of this.languageSelectService.hiragana$ | async">
-  <div class="ask">{{item.c}}</div>
-  <div class="answer">{{item.r}}</div>
-</div>
-
-<div *ngFor="let item of this.languageSelectService.katakana$ | async">
-  <div class="ask">{{item.c}}</div>
-  <div class="answer">{{item.r}}</div>
+<div *ngFor="let item of this.languageSelectService.characters$ | async; let i = index;">
+  <div *ngIf="i === this.currentIndex">
+  <div class="ask" (click)="click()">{{item.c}}</div>
+  <div class="answer" *ngIf="this.showAnswer" (click)="click()">{{item.r}}</div>
+  </div>
 </div>
