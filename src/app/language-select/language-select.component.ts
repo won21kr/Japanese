@@ -3,7 +3,7 @@ import { CharacterModel } from 'app/characters/character.model';
 import { Hiragana, HiraganaDiacritics, HiraganaContracted, HiraganaDiacriticsContracted } from 'app/characters/hiragana';
 import { Katakana, KatakanaDiacritics, KatakanaContracted, KatakanaDiacriticsContracted } from 'app/characters/katakana';
 import { LanguageSelectService } from 'app/language-select/language-select.service';
-import { MdDialog } from "@angular/material";
+import { MdDialog } from '@angular/material';
 
 @Component({
   selector: 'app-language-select',
