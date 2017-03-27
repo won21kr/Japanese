@@ -1,6 +1,10 @@
-$size:250;
+$size:50;
+$fontSize: $size/3;
+$unit: vh;
+
 .ask, .answer {
-  border-radius:100%;
+  color: #fff;
+  border-radius: 100%;
   text-align: center;
   cursor: pointer;
   -webkit-user-select: none;  /* Chrome all / Safari all */
@@ -9,18 +13,18 @@ $size:250;
   user-select: none;          /* Likely future */
 }
 .ask {
-  width:$size + px;
-  height:$size + px;
-  background:#eee;
-  line-height: $size + px;
-  font-size: 72px;
+  width: $size + $unit;
+  height: $size + $unit;
+  background: rgba(63, 81, 181, 0.7);
+  line-height: $size + $unit;
+  font-size: $fontSize + $unit;
 }
 .answer {
-  width:$size/2 + px;
-  height:$size/2 + px;
-  background: rgba(255,255,255,0.8);
-  margin-top: -$size/4 + px;
-  margin-left:$size/1.5 + px;
-  line-height: $size/2 + px;
-  font-size: 34px;
+  width: $size/2 + $unit;
+  height: $size/2 + $unit;
+  background: rgba(233, 30, 99, 0.7);
+  margin-top: -$size/4 + $unit;
+  margin-left: $size/1.5 + $unit;
+  line-height: $size/2 + $unit;
+  font-size: $fontSize/2 + $unit;
 }

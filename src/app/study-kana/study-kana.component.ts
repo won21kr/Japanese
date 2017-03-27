@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CharacterModel } from 'app/characters/character.model';
 import { LanguageSelectService } from 'app/language-select/language-select.service';
 import { LanguageSelectComponent } from 'app/language-select/language-select.component';
@@ -12,10 +12,25 @@ import { MdDialog } from '@angular/material';
 export class StudyKanaComponent implements OnInit {
   private currentIndex = 0;
   private showAnswer = false;
-  constructor(private languageSelectService: LanguageSelectService, private dialog: MdDialog) { }
+  private characters: CharacterModel[] = [];
+  private _subscription;
+  private _subscription2;
+  constructor(private languageSelectService: LanguageSelectService, private dialog: MdDialog) {
+    this._subscription = languageSelectService.characters$.subscribe((value) => {
+      this.characters = value;
+      this.shuffle(this.characters);
+    });
+  }
 
   ngOnInit() {
     this.configure();
+  }
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === ' ') {
+      this.click();
+    }
   }
 
   configure() {
@@ -25,10 +40,18 @@ export class StudyKanaComponent implements OnInit {
 
   click() {
     if (this.showAnswer) {
-      this.currentIndex++;
+      this.characters.splice(this.currentIndex, 1);
+      this.currentIndex = Math.floor(Math.random() * (this.characters.length - 0) + 0);
       this.showAnswer = false;
     } else {
       this.showAnswer = true;
+    }
+  }
+
+  shuffle(a) {
+    for (let i = a.length; i; i--) {
+      let j = Math.floor(Math.random() * i);
+      [a[i - 1], a[j]] = [a[j], a[i - 1]];
     }
   }
 }

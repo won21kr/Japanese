@@ -72,11 +72,6 @@ export class LanguageSelectComponent implements OnInit {
     if (this.hiraganaDiacriticsContracted) {
       hiragana = [...hiragana, ...HiraganaDiacriticsContracted];
     }
-
-    this.languageSelectService.updateHiragana(hiragana);
-  }
-
-  setKatakana() {
     let katakana: CharacterModel[] = [];
     if (this.katakanaBase) {
       katakana = [...katakana, ...Katakana];
@@ -90,11 +85,9 @@ export class LanguageSelectComponent implements OnInit {
     if (this.katakanaDiacriticsContracted) {
       katakana = [...katakana, ...KatakanaDiacriticsContracted];
     }
-    this.languageSelectService.updateKatakana(katakana);
+    this.languageSelectService.updateCharacters(hiragana.concat(katakana));
   }
-
   updateCharacters() {
     this.setHiragana();
-    this.setKatakana();
   }
 }
