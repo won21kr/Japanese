@@ -7,6 +7,10 @@
   <div class="buttonWrapper">
     <button md-button color="primary" (click)="click();"><span *ngIf="!this.showAnswer && !this.forceShowAnswer">Show Answer</span><span *ngIf="this.showAnswer || this.forceShowAnswer">Next Vocab</span></button>
   </div>
+  <div class="progressBar">
+    <div class="progress" [style.width.%]="(this.currentIndex / this.vocabulary.length)*100"></div>
+    <div class="bar" style="width: 100%"></div>
+  </div>
   <div class="vocabWrapper" *ngFor="let vocab of this.vocabulary; let i = index;">
     <div *ngIf="i === this.currentIndex">
       <div class="ask">{{pickWord(vocab)}}</div>
@@ -14,3 +18,5 @@
       <div class="answer" *ngIf="this.showAnswer || this.forceShowAnswer">{{vocab.definition}}</div>
     </div>
   </div>
+  <div *ngIf="this.currentIndex >= this.vocabulary.length">You did it!</div>
+</div>

@@ -22,6 +22,7 @@ export class StudyVocabComponent implements OnInit {
   }
 
   click() {
+    if (this.currentIndex >= this.vocabulary.length) { return; }
     if (this.showAnswer || this.forceShowAnswer) {
       this.currentIndex++;
       this.showAnswer = false;
