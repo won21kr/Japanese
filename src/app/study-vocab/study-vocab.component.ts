@@ -19,6 +19,8 @@ export class StudyVocabComponent implements OnInit {
     this.shuffle(this.vocabulary);
   }
 
+  // TODO Tag and lesson filters
+
   ngOnInit() {
   }
 
