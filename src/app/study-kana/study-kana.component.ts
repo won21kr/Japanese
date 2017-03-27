@@ -14,7 +14,7 @@ export class StudyKanaComponent implements OnInit {
   private showAnswer = false;
   private characters: CharacterModel[] = [];
   private _subscription;
-  private _subscription2;
+
   constructor(private languageSelectService: LanguageSelectService, private dialog: MdDialog) {
     this._subscription = languageSelectService.characters$.subscribe((value) => {
       this.characters = value;
@@ -28,7 +28,7 @@ export class StudyKanaComponent implements OnInit {
 
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === ' ') {
+    if (event.key === 'n') {
       this.click();
     }
   }

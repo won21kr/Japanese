@@ -1,0 +1,33 @@
+.wrapper {
+  width: 90vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+md-checkbox {
+  margin-right: 10px;
+}
+
+.vocabWrapper, .buttonWrapper {
+  margin-top:10px;
+}
+
+.buttonWrapper span {
+  display:inline-block;
+  width: 200px;
+}
+
+.ask {
+  font-size:calc(24px + 2vw);
+}
+
+.furigana {
+  font-size:calc(18px + 1vw);
+}
+.answer {
+  font-size: calc(12px + 0.5vw);
+}
+
+[hidden] {
+  visibility: hidden;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CharacterModel } from 'app/characters/character.model';
 import { Hiragana, HiraganaDiacritics, HiraganaContracted, HiraganaDiacriticsContracted } from 'app/characters/hiragana';
 import { Katakana, KatakanaDiacritics, KatakanaContracted, KatakanaDiacriticsContracted } from 'app/characters/katakana';
@@ -58,8 +58,9 @@ export class LanguageSelectComponent implements OnInit {
     return allChecked;
   }
 
-  setHiragana() {
+  updateCharacters() {
     let hiragana: CharacterModel[] = [];
+    let katakana: CharacterModel[] = [];
     if (this.hiraganaBase) {
       hiragana = [...hiragana, ...Hiragana];
     }
@@ -72,7 +73,6 @@ export class LanguageSelectComponent implements OnInit {
     if (this.hiraganaDiacriticsContracted) {
       hiragana = [...hiragana, ...HiraganaDiacriticsContracted];
     }
-    let katakana: CharacterModel[] = [];
     if (this.katakanaBase) {
       katakana = [...katakana, ...Katakana];
     }
@@ -87,7 +87,12 @@ export class LanguageSelectComponent implements OnInit {
     }
     this.languageSelectService.updateCharacters(hiragana.concat(katakana));
   }
-  updateCharacters() {
-    this.setHiragana();
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.updateCharacters();
+      this.dialog.closeAll();
+    }
   }
 }

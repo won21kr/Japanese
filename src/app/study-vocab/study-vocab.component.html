@@ -1,3 +1,16 @@
-<p>
-  study-vocab works!
-</p>
+<h1>Study Vocabulary</h1>
+<p class="directions">Boop.</p>
+
+<div class="wrapper">
+  <md-checkbox (change)="this.showFurigana = !this.showFurigana" [checked]="this.showFurigana">Show Furigana</md-checkbox>
+  <md-checkbox (change)="this.forceShowAnswer = !this.forceShowAnswer" [checked]="this.forceShowAnswer">Force Show Answer</md-checkbox>
+  <div class="buttonWrapper">
+    <button md-button color="primary" (click)="click();"><span *ngIf="!this.showAnswer && !this.forceShowAnswer">Show Answer</span><span *ngIf="this.showAnswer || this.forceShowAnswer">Next Vocab</span></button>
+  </div>
+  <div class="vocabWrapper" *ngFor="let vocab of this.vocabulary; let i = index;">
+    <div *ngIf="i === this.currentIndex">
+      <div class="ask">{{pickWord(vocab)}}</div>
+      <div class="furigana" *ngIf="this.showFurigana">{{furigana(vocab)}}</div>
+      <div class="answer" *ngIf="this.showAnswer || this.forceShowAnswer">{{vocab.definition}}</div>
+    </div>
+  </div>

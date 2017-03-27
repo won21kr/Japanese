@@ -1,5 +1,5 @@
 <h1>Study Kana</h1>
-<p class="directions">Click the character to see the answer. Click again to see the next character. Alternatively, press <code>space</code>.</p>
+<p class="directions">Click the character to see the answer. Click again to see the next character. Alternatively, press <code>n</code>.</p>
 <button md-button color="primary" (click)="configure();">Configure</button>
 <div *ngFor="let item of this.characters; let i = index;">
   <div *ngIf="i === this.currentIndex">
