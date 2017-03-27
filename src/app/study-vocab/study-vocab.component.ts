@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Vocabulary, vocab } from 'app/characters/vocabulary';
 
 @Component({
@@ -21,6 +21,13 @@ export class StudyVocabComponent implements OnInit {
   ngOnInit() {
   }
 
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'n') {
+      this.click();
+    }
+  }
+
   click() {
     if (this.currentIndex >= this.vocabulary.length) { return; }
     if (this.showAnswer || this.forceShowAnswer) {
@@ -29,6 +36,11 @@ export class StudyVocabComponent implements OnInit {
     } else {
       this.showAnswer = true;
     }
+  }
+
+  wrong() {
+    this.vocabulary.push(this.vocabulary[this.currentIndex]);
+    this.click();
   }
 
   shuffle(a) {

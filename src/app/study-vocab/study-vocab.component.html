@@ -1,11 +1,12 @@
 <h1>Study Vocabulary</h1>
-<p class="directions">Boop.</p>
+<p class="directions">Click button to show answer/show next vocab. Alternatively, press <code>n</code></p>
 
 <div class="wrapper">
   <md-checkbox (change)="this.showFurigana = !this.showFurigana" [checked]="this.showFurigana">Show Furigana</md-checkbox>
   <md-checkbox (change)="this.forceShowAnswer = !this.forceShowAnswer" [checked]="this.forceShowAnswer">Force Show Answer</md-checkbox>
   <div class="buttonWrapper">
     <button md-button color="primary" (click)="click();"><span *ngIf="!this.showAnswer && !this.forceShowAnswer">Show Answer</span><span *ngIf="this.showAnswer || this.forceShowAnswer">Next Vocab</span></button>
+    <button md-button color="warn" (click)="wrong();" [disabled]="!this.showAnswer && !this.forceShowAnswer">Wrong</button>
   </div>
   <div class="progressBar">
     <div class="progress" [style.width.%]="(this.currentIndex / this.vocabulary.length)*100"></div>
