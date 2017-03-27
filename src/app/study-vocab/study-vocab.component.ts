@@ -10,8 +10,9 @@ export class StudyVocabComponent implements OnInit {
   private vocabulary: Vocabulary[];
   private currentIndex = 0;
   private showAnswer = false;
-  private showFurigana = false;
+  private showRomaji = false;
   private forceShowAnswer = false;
+  private toEnglish = true;
 
   constructor() {
     this.vocabulary = vocab;
@@ -55,5 +56,25 @@ export class StudyVocabComponent implements OnInit {
 
   furigana(vocab: Vocabulary): string {
     return vocab.katakana || vocab.kanji ? vocab.hiragana : '';
+  }
+
+  changeTranslate() {
+    this.toEnglish = !this.toEnglish;
+  }
+
+  shouldShowEnglish(): boolean {
+    return ((this.showAnswer || this.forceShowAnswer) && this.toEnglish) || !this.toEnglish;
+  }
+
+  shouldShowRomaji(): boolean {
+    return this.showRomaji && (this.toEnglish || this.showAnswer);
+  }
+
+  shouldShowJapanese(): boolean {
+    return ((this.showAnswer || this.forceShowAnswer) && !this.toEnglish) || this.toEnglish;
+  }
+
+  notShowAnswer(): boolean {
+    return !this.showAnswer && !this.forceShowAnswer;
   }
 }

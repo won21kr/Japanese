@@ -8,6 +8,10 @@ md-checkbox {
   margin-right: 10px;
 }
 
+md-slide-toggle {
+  display: inline-block;
+}
+
 .vocabWrapper, .buttonWrapper {
   margin-top:10px;
 }
@@ -37,17 +41,13 @@ md-checkbox {
   z-index: 1;
 }
 
-.ask {
+.japanese {
   font-size:calc(24px + 2vw);
 }
 
 .furigana {
   font-size:calc(18px + 1vw);
 }
-.answer {
+.english {
   font-size: calc(12px + 0.5vw);
-}
-
-[hidden] {
-  visibility: hidden;
 }

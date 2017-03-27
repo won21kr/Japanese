@@ -2,11 +2,13 @@
 <p class="directions">Click button to show answer/show next vocab. Alternatively, press <code>n</code></p>
 
 <div class="wrapper">
-  <md-checkbox (change)="this.showFurigana = !this.showFurigana" [checked]="this.showFurigana">Show Furigana</md-checkbox>
+  <md-checkbox (change)="this.showRomaji = !this.showRomaji" [checked]="this.showRomaji">Show Romaji</md-checkbox>
   <md-checkbox (change)="this.forceShowAnswer = !this.forceShowAnswer" [checked]="this.forceShowAnswer">Force Show Answer</md-checkbox>
+  <br/>
+  <md-slide-toggle (change)="changeTranslate()" [checked]="!this.translateTo">To English</md-slide-toggle>
   <div class="buttonWrapper">
-    <button md-button color="primary" (click)="click();"><span *ngIf="!this.showAnswer && !this.forceShowAnswer">Show Answer</span><span *ngIf="this.showAnswer || this.forceShowAnswer">Next Vocab</span></button>
-    <button md-button color="warn" (click)="wrong();" [disabled]="!this.showAnswer && !this.forceShowAnswer">Wrong</button>
+    <button md-button color="primary" (click)="click();"><span *ngIf="notShowAnswer()">Show Answer</span><span *ngIf="this.showAnswer || this.forceShowAnswer">Next Vocab</span></button>
+    <button md-button color="warn" (click)="wrong();" [disabled]="notShowAnswer()">Wrong</button>
   </div>
   <div class="progressBar">
     <div class="progress" [style.width.%]="(this.currentIndex / this.vocabulary.length)*100"></div>
@@ -14,9 +16,10 @@
   </div>
   <div class="vocabWrapper" *ngFor="let vocab of this.vocabulary; let i = index;">
     <div *ngIf="i === this.currentIndex">
-      <div class="ask">{{pickWord(vocab)}}</div>
+      <div class="japanese" *ngIf="shouldShowJapanese()">{{pickWord(vocab)}}</div>
       <div class="furigana" *ngIf="this.showFurigana">{{furigana(vocab)}}</div>
-      <div class="answer" *ngIf="this.showAnswer || this.forceShowAnswer">{{vocab.definition}}</div>
+      <div class="romaji" *ngIf="shouldShowRomaji()">{{vocab.romaji}}</div>
+      <div class="english" *ngIf="shouldShowEnglish()">{{vocab.definition}}</div>
     </div>
   </div>
   <div *ngIf="this.currentIndex >= this.vocabulary.length">You did it!</div>
