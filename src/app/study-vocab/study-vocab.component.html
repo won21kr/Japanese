@@ -1,11 +1,11 @@
 <h1>Study Vocabulary</h1>
-<p class="directions">Click button to show answer/show next vocab. Alternatively, press <code>n</code></p>
+<p class="directions">Click button to show answer/show next vocab. Alternatively, press <code>n</code>. Click the wrong button if you want to repeat a vocab.</p>
 
 <div class="wrapper">
   <md-checkbox (change)="this.showRomaji = !this.showRomaji" [checked]="this.showRomaji">Show Romaji</md-checkbox>
   <md-checkbox (change)="this.forceShowAnswer = !this.forceShowAnswer" [checked]="this.forceShowAnswer">Force Show Answer</md-checkbox>
   <br/>
-  <md-slide-toggle (change)="changeTranslate()" [checked]="!this.translateTo">To English</md-slide-toggle>
+  <md-slide-toggle (change)="changeTranslate()" [checked]="!this.translateTo">Japanese to English</md-slide-toggle>
   <div class="buttonWrapper">
     <button md-button color="primary" (click)="click();"><span *ngIf="notShowAnswer()">Show Answer</span><span *ngIf="this.showAnswer || this.forceShowAnswer">Next Vocab</span></button>
     <button md-button color="accent" (click)="wrong();" [disabled]="notShowAnswer()">Wrong</button>
