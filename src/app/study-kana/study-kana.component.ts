@@ -3,11 +3,26 @@ import { CharacterModel } from 'app/characters/character.model';
 import { LanguageSelectService } from 'app/language-select/language-select.service';
 import { LanguageSelectComponent } from 'app/language-select/language-select.component';
 import { MdDialog } from '@angular/material';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-study-kana',
   templateUrl: './study-kana.component.html',
-  styleUrls: ['./study-kana.component.scss']
+  styleUrls: ['./study-kana.component.scss'],
+  animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({ transform: 'scale(0)', opacity: 0 }),
+          animate('125ms', style({ transform: 'scale(1)', opacity: 1 }))
+        ]),
+        transition(':leave', [
+          style({ transform: 'scale(1)', opacity: 1 }),
+          animate('125ms', style({ transform: 'scale(0)', opacity: 0 }))
+        ])
+      ]
+    )
+  ]
 })
 export class StudyKanaComponent implements OnInit {
   private currentIndex = 0;

@@ -4,6 +4,6 @@
 <div *ngFor="let item of this.characters; let i = index;">
   <div *ngIf="i === this.currentIndex">
   <div class="ask" (click)="click()">{{item.c}}</div>
-  <div class="answer" *ngIf="this.showAnswer" (click)="click()">{{item.r}}</div>
+  <div class="answer" *ngIf="this.showAnswer"  [@enterAnimation]="this.showAnswer" (click)="click()">{{item.r}}</div>
   </div>
 </div>
