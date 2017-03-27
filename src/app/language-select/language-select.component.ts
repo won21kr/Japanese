@@ -12,18 +12,18 @@ import { MdDialog } from "@angular/material";
 })
 export class LanguageSelectComponent implements OnInit {
 
-  private isCheckAllHiragana = false;
-  private isCheckAllKatakana = false;
+  private isCheckAllHiragana = true;
+  private isCheckAllKatakana = true;
 
   private hiraganaBase = true;
-  private hiraganaDiacritics = false;
-  private hiraganaContracted = false;
-  private hiraganaDiacriticsContracted = false;
+  private hiraganaDiacritics = true;
+  private hiraganaContracted = true;
+  private hiraganaDiacriticsContracted = true;
 
   private katakanaBase = true;
-  private katakanaDiacritics = false;
-  private katakanaContracted = false;
-  private katakanaDiacriticsContracted = false;
+  private katakanaDiacritics = true;
+  private katakanaContracted = true;
+  private katakanaDiacriticsContracted = true;
 
   constructor(private languageSelectService: LanguageSelectService, private dialog: MdDialog) { }
 
