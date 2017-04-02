@@ -23,6 +23,7 @@ export class StudyVocabComponent implements OnInit {
   private toEnglish = true;
   private lessons: number[] = [];
   private selectedTags: string[] = [];
+  private availableTags: any[];
 
   get minLesson() {
     return this._minLesson;
@@ -38,6 +39,14 @@ export class StudyVocabComponent implements OnInit {
   set maxLesson(val: number) {
     this._maxLesson = val;
     if (val < this._minLesson) { this._minLesson = val; }
+  }
+
+  constructor() {
+    this.vocabulary = vocab;
+    this.tags = Tags;
+    this.originalVocabulary = vocab;
+    this.filterLesson();
+    this.shuffle(this.vocabulary);
   }
 
   checkBox(event: MdCheckboxChange, val: string) {
@@ -64,24 +73,16 @@ export class StudyVocabComponent implements OnInit {
       return;
     }
     const selectedVocab: Vocabulary[] = [];
-    this.originalVocabulary.forEach((vocab, i) => {
-      vocab.tags.forEach((tag, index) => {
-        this.selectedTags.forEach((st, i) => {
+    this.originalVocabulary.forEach(vocab => {
+      vocab.tags.forEach(tag => {
+        this.selectedTags.forEach(st => {
           if (tag === st) {
             selectedVocab.push(vocab);
           }
-        })
-      })
+        });
+      });
     });
     this.filterLesson(selectedVocab);
-  }
-
-  constructor() {
-    this.vocabulary = vocab;
-    this.tags = Tags;
-    this.tagArray = Object.keys(this.tags);
-    this.originalVocabulary = vocab;
-    this.shuffle(this.vocabulary);
   }
 
   // TODO Tag and lesson filters
@@ -97,6 +98,21 @@ export class StudyVocabComponent implements OnInit {
   filterLesson(vocab: Vocabulary[] = this.originalVocabulary) {
     this.vocabulary = vocab.filter((v) => {
       return parseInt(v.lesson, 10) >= this.minLesson && parseInt(v.lesson, 10) <= this.maxLesson;
+    });
+    this.availableTags = [];
+    this.vocabulary.forEach(v => {
+      v.tags.forEach((tag, index) => {
+        this.availableTags.push(tag);
+      });
+    });
+    this.availableTags = this.uniq(this.availableTags);
+    this.tagArray = this.availableTags;
+    this.currentIndex = 0;
+  }
+
+  uniq(a: any[]) {
+    return a.sort().filter((item, pos, ary) => {
+      return !pos || item !== ary[pos - 1];
     });
   }
 

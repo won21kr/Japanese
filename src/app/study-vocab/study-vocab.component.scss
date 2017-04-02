@@ -72,6 +72,19 @@ md-slide-toggle {
   }
 }
 
+.progress-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 15px;
+}
+.tracker {
+  position: absolute;
+  transition: left 0.25s;
+  top: 5px;
+}
+md-icon {
+  vertical-align: middle;
+}
 .tags-wrapper {
   display:inline-block;
   position: relative;

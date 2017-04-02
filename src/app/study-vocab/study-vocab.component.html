@@ -6,9 +6,10 @@
 
 <div class="wrapper">
   <div class="tags-wrapper">
-    <div class="tags-opener">Tags</div>
+    <div class="tags-opener">
+      <md-icon>label</md-icon>Tags</div>
     <div class="tags">
-      <md-checkbox *ngFor="let tag of tagArray" (change)="checkBox($event, tag)">{{tags[tag]}}</md-checkbox>
+      <md-checkbox *ngFor="let tag of tagArray" (change)="checkBox($event, tag)">{{tag}}</md-checkbox>
     </div>
   </div>
   Min:
@@ -19,6 +20,7 @@
   <md-select [(ngModel)]="maxLesson" (change)="filterLesson()">
     <md-option *ngFor="let lesson of lessons" [value]="lesson">Lessson {{lesson}}</md-option>
   </md-select>
+  <br/>
   <md-checkbox (change)="showRomaji = !showRomaji" [checked]="showRomaji">Show Romaji</md-checkbox>
   <md-checkbox (change)="showFurigana = !showFurigana" [checked]="showFurigana">Show Furigana</md-checkbox>
   <md-checkbox (change)="forceShowAnswer = !forceShowAnswer" [checked]="forceShowAnswer">Force Show Answer</md-checkbox>
@@ -31,10 +33,12 @@
     </button>
     <button md-button color="accent" (click)="wrong();" [disabled]="notShowAnswer()">Wrong</button>
   </div>
-  <span>{{vocabulary.length}}</span>
-  <div class="progressBar">
-    <div class="progress" [style.width.%]="(currentIndex / vocabulary.length)*100"></div>
-    <div class="bar" style="width: 100%"></div>
+  <div class="progress-wrapper">
+    <span class="tracker" [style.left.%]="(currentIndex / vocabulary.length)*100">{{currentIndex}}/{{vocabulary.length}}</span>
+    <div class="progressBar">
+      <div class="progress" [style.width.%]="(currentIndex / vocabulary.length)*100"></div>
+      <div class="bar" style="width: 100%"></div>
+    </div>
   </div>
   <div class="vocabWrapper" *ngIf="currentIndex < vocabulary.length">
     <div class="japanese" *ngIf="shouldShowJapanese()">{{pickWord(vocabulary[currentIndex])}}</div>
