@@ -5,28 +5,31 @@
 </p>
 
 <div class="wrapper">
-  <div class="tags-wrapper">
-    <div class="tags-opener">
-      <md-icon>label</md-icon>Tags</div>
-    <div class="tags">
-      <p class="directions" style="margin-top: 0;">Show only vocab with the following tags:</p>
-      <md-checkbox *ngFor="let tag of tagArray" (change)="checkBox($event, tag)">{{tag}}</md-checkbox>
-    </div>
-  </div>
-  Min:
-  <md-select [(ngModel)]="minLesson" (change)="filterLesson()">
-    <md-option *ngFor="let lesson of lessons" [value]="lesson">Lessson {{lesson}}</md-option>
-  </md-select>
-  Max:
-  <md-select [(ngModel)]="maxLesson" (change)="filterLesson()">
-    <md-option *ngFor="let lesson of lessons" [value]="lesson">Lessson {{lesson}}</md-option>
-  </md-select>
-  <br/>
-  <md-checkbox (change)="showRomaji = !showRomaji" [checked]="showRomaji">Show Romaji</md-checkbox>
-  <md-checkbox (change)="showFurigana = !showFurigana" [checked]="showFurigana">Show Furigana</md-checkbox>
-  <md-checkbox (change)="forceShowAnswer = !forceShowAnswer" [checked]="forceShowAnswer">Force Show Answer</md-checkbox>
-  <br/>
   <md-slide-toggle (change)="changeTranslate()" [checked]="!translateTo">Japanese to English</md-slide-toggle>
+  <div class="filter-wrapper">
+    <div class="tags-wrapper">
+      <div class="tags-opener">
+        <md-icon>label</md-icon>Tags</div>
+      <div class="tags">
+        <p class="directions" style="margin-top: 0;">Show only vocab with the following tags:</p>
+        <md-checkbox *ngFor="let tag of tagArray" (change)="checkBox($event, tag)">{{tag}}</md-checkbox>
+      </div>
+    </div>
+    Min:
+    <md-select [(ngModel)]="minLesson" (change)="filterLesson()">
+      <md-option *ngFor="let lesson of lessons" [value]="lesson">Lessson {{lesson}}</md-option>
+    </md-select>
+    Max:
+    <md-select [(ngModel)]="maxLesson" (change)="filterLesson()">
+      <md-option *ngFor="let lesson of lessons" [value]="lesson">Lessson {{lesson}}</md-option>
+    </md-select>
+  </div>
+  <div class="filter-wrapper">
+    <md-checkbox (change)="showRomaji = !showRomaji" [checked]="showRomaji">Show Romaji</md-checkbox>
+    <md-checkbox (change)="showFurigana = !showFurigana" [checked]="showFurigana">Show Furigana</md-checkbox>
+    <md-checkbox (change)="forceShowAnswer = !forceShowAnswer" [checked]="forceShowAnswer">Force Show Answer</md-checkbox>
+  </div>
+
   <div class="buttonWrapper">
     <button md-button color="primary" (click)="click();">
       <span *ngIf="notShowAnswer()">Show Answer</span>

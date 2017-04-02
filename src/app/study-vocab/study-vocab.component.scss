@@ -21,6 +21,14 @@ md-slide-toggle {
   width: 200px;
 }
 
+.filter-wrapper {
+  margin-bottom: 20px;
+
+  md-select {
+    vertical-align: middle;
+  }
+}
+
 .vocabWrapper {
   .japanese {
     font-size:calc(24px + 2vw);
