@@ -9,6 +9,7 @@
     <div class="tags-opener">
       <md-icon>label</md-icon>Tags</div>
     <div class="tags">
+      <p class="directions" style="margin-top: 0;">Show only vocab with the following tags:</p>
       <md-checkbox *ngFor="let tag of tagArray" (change)="checkBox($event, tag)">{{tag}}</md-checkbox>
     </div>
   </div>
