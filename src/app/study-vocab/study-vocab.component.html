@@ -1,26 +1,46 @@
 <h1>Study Vocabulary</h1>
-<p class="directions">Click button to show answer/show next vocab. Alternatively, press <code>n</code>. Click the wrong button if you want to repeat a vocab.</p>
+<p class="directions">
+  Click button to show answer/show next vocab. Alternatively, press <code>n</code>. Click the wrong button if you want to
+  repeat a vocab.
+</p>
 
 <div class="wrapper">
-  <md-checkbox (change)="this.showRomaji = !this.showRomaji" [checked]="this.showRomaji">Show Romaji</md-checkbox>
-  <md-checkbox (change)="this.forceShowAnswer = !this.forceShowAnswer" [checked]="this.forceShowAnswer">Force Show Answer</md-checkbox>
-  <br/>
-  <md-slide-toggle (change)="changeTranslate()" [checked]="!this.translateTo">Japanese to English</md-slide-toggle>
-  <div class="buttonWrapper">
-    <button md-button color="primary" (click)="click();"><span *ngIf="notShowAnswer()">Show Answer</span><span *ngIf="this.showAnswer || this.forceShowAnswer">Next Vocab</span></button>
-    <button md-button color="accent" (click)="wrong();" [disabled]="notShowAnswer()">Wrong</button>
-  </div>
-  <div class="progressBar">
-    <div class="progress" [style.width.%]="(this.currentIndex / this.vocabulary.length)*100"></div>
-    <div class="bar" style="width: 100%"></div>
-  </div>
-  <div class="vocabWrapper" *ngFor="let vocab of this.vocabulary; let i = index;">
-    <div *ngIf="i === this.currentIndex">
-      <div class="japanese" *ngIf="shouldShowJapanese()">{{pickWord(vocab)}}</div>
-      <div class="furigana" *ngIf="this.showFurigana">{{furigana(vocab)}}</div>
-      <div class="romaji" *ngIf="shouldShowRomaji()">{{vocab.romaji}}</div>
-      <div class="english" *ngIf="shouldShowEnglish()">{{vocab.definition}}</div>
+  <div class="tags-wrapper">
+    <div class="tags-opener">Tags</div>
+    <div class="tags">
+      <md-checkbox *ngFor="let tag of tagArray" (change)="checkBox($event, tag)">{{tags[tag]}}</md-checkbox>
     </div>
   </div>
-  <div *ngIf="this.currentIndex >= this.vocabulary.length">You did it!</div>
+  Min:
+  <md-select [(ngModel)]="minLesson" (change)="filterLesson()">
+    <md-option *ngFor="let lesson of lessons" [value]="lesson">Lessson {{lesson}}</md-option>
+  </md-select>
+  Max:
+  <md-select [(ngModel)]="maxLesson" (change)="filterLesson()">
+    <md-option *ngFor="let lesson of lessons" [value]="lesson">Lessson {{lesson}}</md-option>
+  </md-select>
+  <md-checkbox (change)="showRomaji = !showRomaji" [checked]="showRomaji">Show Romaji</md-checkbox>
+  <md-checkbox (change)="showFurigana = !showFurigana" [checked]="showFurigana">Show Furigana</md-checkbox>
+  <md-checkbox (change)="forceShowAnswer = !forceShowAnswer" [checked]="forceShowAnswer">Force Show Answer</md-checkbox>
+  <br/>
+  <md-slide-toggle (change)="changeTranslate()" [checked]="!translateTo">Japanese to English</md-slide-toggle>
+  <div class="buttonWrapper">
+    <button md-button color="primary" (click)="click();">
+      <span *ngIf="notShowAnswer()">Show Answer</span>
+      <span *ngIf="showAnswer || forceShowAnswer">Next Vocab</span>
+    </button>
+    <button md-button color="accent" (click)="wrong();" [disabled]="notShowAnswer()">Wrong</button>
+  </div>
+  <span>{{vocabulary.length}}</span>
+  <div class="progressBar">
+    <div class="progress" [style.width.%]="(currentIndex / vocabulary.length)*100"></div>
+    <div class="bar" style="width: 100%"></div>
+  </div>
+  <div class="vocabWrapper" *ngIf="currentIndex < vocabulary.length">
+    <div class="japanese" *ngIf="shouldShowJapanese()">{{pickWord(vocabulary[currentIndex])}}</div>
+    <div class="furigana" *ngIf="shouldShowFurigana()">{{furigana(vocabulary[currentIndex])}}</div>
+    <div class="romaji" *ngIf="shouldShowRomaji()">{{vocabulary[currentIndex].romaji}}</div>
+    <div class="english" *ngIf="shouldShowEnglish()">{{vocabulary[currentIndex].definition}}</div>
+  </div>
+  <div *ngIf="currentIndex >= vocabulary.length">You did it!</div>
 </div>

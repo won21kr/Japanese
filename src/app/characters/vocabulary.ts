@@ -7,7 +7,7 @@ export interface Vocabulary {
   kanji?: string;
   katakana?: string;
   lesson: string;
-  tags: string[] | string;
+  tags: string[];
   conjugateTo?: string;
 }
 
@@ -2459,7 +2459,7 @@ export const vocab: Vocabulary[] = [
         kanji: '前',
         hiragana: 'まえ',
         romaji: 'mae',
-        definition: 'fron',
+        definition: 'front',
         lesson: '4',
         tags: [tags.preposition, tags.pg106]
     },
