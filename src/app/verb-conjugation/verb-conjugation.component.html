@@ -4,7 +4,7 @@
 <div id="verb">
   <div class="type">{{type}}</div>
   <div class="definition">{{definition}}</div>
-  <div id="japanese">
+  <div id="japanese" *ngIf="type">
     <label>dictionary form</label>
     <div>
       <div class="kanji">{{dfKanji}}</div>

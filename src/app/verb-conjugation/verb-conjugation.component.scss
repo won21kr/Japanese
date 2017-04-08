@@ -2,10 +2,11 @@
     float: left;
     padding: 0;
     list-style: none;
-    max-height: 600px;
+    max-height: 100vh;
     overflow: auto;
     min-width: 125px;
     font-size: 23px;
+    margin-top: -15px;
 }
 .definition {
     font-size: 16px;
@@ -21,6 +22,10 @@
 }
 .hiragana {
   font-size: 20px;
+}
+
+.kanji:empty + .hiragana {
+  font-size:36px;
 }
 label {
     vertical-align: middle;
