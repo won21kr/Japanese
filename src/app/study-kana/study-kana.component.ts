@@ -34,6 +34,7 @@ export class StudyKanaComponent implements OnInit {
     this._subscription = languageSelectService.characters$.subscribe((value) => {
       this.characters = value;
       this.shuffle(this.characters);
+      this.showAnswer = false;
     });
   }
 

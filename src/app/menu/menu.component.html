@@ -1,6 +1,15 @@
-<h4 style="text-align: center;">Japanese</h4>
-<ul>
-  <li><a md-button color="primary" href="/grid">Kana Grid</a></li>
-  <li><a md-button color="primary" href="/studyKana">Study Kana</a></li>
-  <li><a md-button color="primary" href="/studyVocab">Study Vocab</a></li>
-</ul>
+<div class="wrapper">
+  <h4 style="text-align: center;">Japanese</h4>
+  <ul>
+    <li><a md-button color="accent" (click)="about()">About</a></li>
+    <li><a md-button color="primary" (click)="grid()">Kana Grid</a></li>
+    <li><a md-button color="primary" (click)="kana()">Study Kana</a></li>
+    <li><a md-button color="primary" (click)="vocab()">Study Vocab</a></li>
+    <li><a md-button color="primary" (click)="verb()">Verb Conjugation</a></li>
+  </ul>
+  <div class="social">
+    <a href="{{angular}}" target="_new"><i class="icon ion-social-angular"></i></a>
+    <a href="{{github}}" target="_new"><i class="icon ion-social-github"></i></a>
+    <a href="{{instagram}}" target="_new"><i class="icon ion-social-instagram"></i></a>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Vocabulary, vocab } from 'app/characters/vocabulary';
 import { tags as Tags } from 'app/characters/tags';
-import { MdCheckboxChange } from "@angular/material";
+import { MdCheckboxChange } from '@angular/material';
 
 @Component({
   selector: 'app-study-vocab',
@@ -49,6 +49,14 @@ export class StudyVocabComponent implements OnInit {
     this.shuffle(this.vocabulary);
   }
 
+  ngOnInit() {
+    const min = -1;
+    const max = 6;
+    for (let i = min; i <= max; i++) {
+      this.lessons.push(i);
+    }
+  }
+
   checkBox(event: MdCheckboxChange, val: string) {
     if (event.checked) {
       this.selectedTags.push(val);
@@ -85,16 +93,6 @@ export class StudyVocabComponent implements OnInit {
     this.filterLesson(selectedVocab);
   }
 
-  // TODO Tag and lesson filters
-
-  ngOnInit() {
-    const min = -1;
-    const max = 6;
-    for (let i = min; i <= max; i++) {
-      this.lessons.push(i);
-    }
-  }
-
   filterLesson(vocab: Vocabulary[] = this.originalVocabulary) {
     this.vocabulary = vocab.filter((v) => {
       return parseInt(v.lesson, 10) >= this.minLesson && parseInt(v.lesson, 10) <= this.maxLesson;
@@ -107,6 +105,7 @@ export class StudyVocabComponent implements OnInit {
     });
     this.availableTags = this.uniq(this.availableTags);
     this.tagArray = this.availableTags;
+    this.showAnswer = false;
     this.currentIndex = 0;
   }
 

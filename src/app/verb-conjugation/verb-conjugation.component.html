@@ -1,0 +1,44 @@
+<ul class="verbList">
+  <li *ngFor="let verb of verbs; let i = index;" (click)="click(i)">{{verb.kanji || verb.hiragana}}</li>
+</ul>
+<div id="verb">
+  <div class="type">{{type}}</div>
+  <div class="definition">{{definition}}</div>
+  <div id="japanese">
+    <label>dictionary form</label>
+    <div>
+      <div class="kanji">{{dfKanji}}</div>
+      <div class="hiragana">{{dfHiragana}}</div>
+    </div>
+    <br/>
+    <label>present, affirmative</label>
+    <div>
+      <div class="kanji">{{paKanji}}</div>
+      <div class="hiragana">{{paHiragana}}</div>
+    </div>
+    <br/>
+    <label>present, negative</label>
+    <div>
+      <div class="kanji">{{pnKanji}}</div>
+      <div class="hiragana">{{pnHiragana}}</div>
+    </div>
+    <br/>
+    <label>past, affirmative</label>
+    <div>
+      <div class="kanji">{{ptaKanji}}</div>
+      <div class="hiragana">{{ptaHiragana}}</div>
+    </div>
+    <br/>
+    <label>past, negative</label>
+    <div>
+      <div class="kanji">{{ptnKanji}}</div>
+      <div class="hiragana">{{ptnHiragana}}</div>
+    </div>
+    <br/>
+    <label>stem</label>
+    <div>
+      <div class="kanji">{{sKanji}}</div>
+      <div class="hiragana">{{sHiragana}}</div>
+    </div>
+  </div>
+</div>

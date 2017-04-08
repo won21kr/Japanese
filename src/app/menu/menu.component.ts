@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GITHUB, INSTAGRAM, ANGULAR } from 'app/menu/menu.items';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  github = GITHUB;
+  instagram = INSTAGRAM;
+  angular = ANGULAR;
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  about() {
+    this.router.navigate(['/']);
+  }
+  grid() {
+    this.router.navigate(['/grid']);
+  }
+
+  kana() {
+    this.router.navigate(['/studyKana']);
+  }
+
+  vocab() {
+    this.router.navigate(['/studyVocab']);
+  }
+  verb() {
+    this.router.navigate(['/verb']);
   }
 
 }

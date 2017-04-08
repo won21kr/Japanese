@@ -14,6 +14,7 @@ import { LanguageSelectService } from 'app/language-select/language-select.servi
 import { MaterialModule, MdDialog } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { GridComponent } from './grid/grid.component';
+import { VerbConjugationComponent } from './verb-conjugation/verb-conjugation.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { GridComponent } from './grid/grid.component';
     MenuComponent,
     HomeComponent,
     LanguageSelectComponent,
-    GridComponent
+    GridComponent,
+    VerbConjugationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,14 @@
 $color: #e99e0e;
 
+.social {
+  position: absolute;
+  bottom: 0;
+
+  a {
+      color: #e91e63;
+      font-size: 26px;
+  }
+}
 ul {
   list-style: none;
   padding: 0;
